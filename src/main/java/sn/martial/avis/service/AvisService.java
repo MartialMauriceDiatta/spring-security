@@ -10,6 +10,7 @@ import sn.martial.avis.entite.Utilisateur;
 import sn.martial.avis.repository.AvisRepository;
 import sn.martial.avis.repository.UtilisateurRepository;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 /**
@@ -53,5 +54,10 @@ public class AvisService {
         log.info("Avis créé avec succès avec l'ID: {}", avisSauvegarde.getId());
 
         return avisSauvegarde;
+    }
+
+    public List<Avis> lister() {
+        log.info("Récupération de tous les avis");
+        return avisRepository.findAll();
     }
 }

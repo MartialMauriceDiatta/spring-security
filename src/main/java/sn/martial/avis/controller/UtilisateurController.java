@@ -17,7 +17,7 @@ import java.util.List;
 public class UtilisateurController {
     UtilisateurService utilisateurService;
 
-    @PreAuthorize("hasAnyAuthority('ADMINISTRATEUR_READ', 'MANAGER_READ')")
+    @PreAuthorize("hasAnyAuthority('ROLE_ADMINISTRATEUR', 'ROLE_MANAGER')")
     @GetMapping
     public List<Utilisateur> liste() {
         return this.utilisateurService.liste();

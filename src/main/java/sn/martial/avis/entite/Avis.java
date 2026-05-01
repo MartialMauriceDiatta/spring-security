@@ -29,6 +29,7 @@ public class Avis {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
+    @Builder.Default
     private StatusAvis status = StatusAvis.EN_ATTENTE;
 
     @ManyToOne(fetch = FetchType.LAZY)

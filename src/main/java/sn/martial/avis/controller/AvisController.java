@@ -4,12 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import sn.martial.avis.entite.Avis;
 import sn.martial.avis.service.AvisService;
+
+import java.util.List;
 
 /**
  * Contrôleur REST pour la gestion des avis
@@ -33,5 +37,17 @@ public class AvisController {
         log.info("Réception d'une demande de création d'avis");
         Avis avisResponse = avisService.creer(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(avisResponse);
+    }
+
+    /**
+     * Récupère tous les avis
+     *
+     * @return Liste des avis
+     */
+    @PreAuthorize("hasAnyAuthority('ROLE_MANAGER', 'ROLE_ADMINISTRATEUR')")
+    @GetMapping
+    public List<Avis> lister() {
+        log.info("Réception d'une demande de récupération des avis");
+        return avisService.lister();
     }
 }
