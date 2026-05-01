@@ -44,6 +44,7 @@ public class Utilisateur implements UserDetails {
     private String email;
 
     @Column(nullable = false)
+    @Builder.Default
     private Boolean actif = false;
 
     @Column(nullable = false)

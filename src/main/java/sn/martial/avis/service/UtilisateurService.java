@@ -2,7 +2,6 @@ package sn.martial.avis.service;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -93,7 +92,7 @@ public class UtilisateurService implements UserDetailsService {
 
     public List<Utilisateur> liste() {
         final Iterable<Utilisateur> utilisateurIterable = this.utilisateurRepository.findAll();
-        List<Utilisateur> utilisateurs = new ArrayList();
+        List<Utilisateur> utilisateurs = new ArrayList<>();
         for (Utilisateur utilisateur : utilisateurIterable) {
             utilisateurs.add(utilisateur);
         }
